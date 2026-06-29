@@ -31,13 +31,11 @@ import lombok.ToString;
 
 public class User {
 @Id
-//@Column(length = 36)
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 @JoinColumn(name="profile_media_id")
 @OneToOne
-//@Column(name="profile_media_id",length = 36)
 	private Media profileMediaId;
 
 @Column(length = 100,nullable = false)
@@ -67,10 +65,10 @@ public class User {
 	@Column(length = 100,nullable = false)
 	private String city;
 	
-	@Column(precision=10,scale=7,nullable = false)
+	@Column(precision=10,scale=7)
 	private BigDecimal latitude;
 	
-	@Column(precision=10,scale=7,nullable = false)
+	@Column(precision=10,scale=7)
 	private BigDecimal longitude;
 	
 	@CreationTimestamp
@@ -81,25 +79,25 @@ public class User {
 	@Column(name="updated_at")
 	private LocalDateTime updatedAt;
 	
-	@OneToMany(mappedBy = "uploadedBy")
-	private List<Media>uploadedMedia=new ArrayList<>();
-
-	@OneToMany(mappedBy = "user")
-	private List<Document>documents=new ArrayList<>();
-
-@OneToMany(mappedBy = "user")
-private List<Request>requests=new ArrayList<>();
-
-@OneToMany(mappedBy = "user")
-List<Notification> notifications=new ArrayList<>();
-
-@OneToMany(mappedBy = "user")
-List<ActivityLogs>activityLogs=new ArrayList<>();
-
-@OneToMany(mappedBy = "deliveryPartnerId")
-List<Deliveries>deliveryPartnerId=new ArrayList<>();
-
-@OneToMany(mappedBy = "matchedBy")
-List<Matches>matchedBy=new ArrayList<>();
+//	@OneToMany(mappedBy = "uploadedBy")
+//	private List<Media>uploadedMedia=new ArrayList<>();
+//
+//	@OneToMany(mappedBy = "user")
+//	private List<Document>documents=new ArrayList<>();
+//
+//@OneToMany(mappedBy = "user")
+//private List<Request>requests=new ArrayList<>();
+//
+//@OneToMany(mappedBy = "user")
+//List<Notification> notifications=new ArrayList<>();
+//
+//@OneToMany(mappedBy = "user")
+//List<ActivityLogs>activityLogs=new ArrayList<>();
+//
+//@OneToMany(mappedBy = "deliveryPartnerId")
+//List<Deliveries>deliveryPartnerId=new ArrayList<>();
+//
+//@OneToMany(mappedBy = "matchedBy")
+//List<Matches>matchedBy=new ArrayList<>();
 
 }

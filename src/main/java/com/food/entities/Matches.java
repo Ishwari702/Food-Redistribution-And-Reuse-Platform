@@ -29,13 +29,11 @@ private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name="donation_request_id")
-	//@Column(name="donation_request_id")
-private Request donationRequestId;
+private Request donationRequest;
 	
 	@ManyToOne
 	@JoinColumn(name="receiver_request_id")
-	//@Column(name="receiver_request_id")
-private Request receiverRequestId;
+private Request receiverRequest;
 	
 	@Column(name="match_status")
 private String matchStatus;
@@ -45,9 +43,8 @@ private LocalDateTime matchedAt;
 	
 	@ManyToOne
 	@JoinColumn(name="matched_by")
-	//@Column(name="matched_by")
 private User matchedBy;
 	
-@OneToOne(mappedBy = "match")
-private Deliveries delivery;
+//@OneToOne(mappedBy = "match")
+//private Deliveries delivery;
 }

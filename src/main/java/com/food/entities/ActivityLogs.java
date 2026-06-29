@@ -30,7 +30,7 @@ private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	//@Column(name="user_id")
+	
 private User user;
 	
 private String action;

@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,6 @@ import lombok.ToString;
 public class Document {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//@Column(length = 36)
 	private Long id;
 	
 	@Column(name="document_type",length = 50,nullable = false)
@@ -43,14 +43,12 @@ private String remarks;
 @Column(name="uploaded_at",nullable = false,updatable = false)
 private LocalDateTime uploadedAt;
 
-@ManyToOne()
+@OneToOne()
 @JoinColumn(name="media_id",nullable = false)
-//@Column(name="media_id",length = 36,nullable = false)
 private Media media;
 
 @ManyToOne()
 @JoinColumn(name="user_id",nullable = false)
-//@Column(name="user_id",length = 36,nullable = false)
 private User user;
 
 

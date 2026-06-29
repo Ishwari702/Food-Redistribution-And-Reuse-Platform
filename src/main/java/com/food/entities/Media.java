@@ -29,7 +29,6 @@ import lombok.ToString;
 public class Media {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(length = 36)
 private Long id;
 	
 	@Column(name="file_name",length = 255,nullable = false)
@@ -49,13 +48,12 @@ private Double compressionRatio;
 	
 	@ManyToOne
 	@JoinColumn(name="uploaded_by",nullable = false)
-	//@Column(name="uploaded_by",length = 36,nullable = false)
 private User uploadedBy;
 	
 	@CreationTimestamp
 	@Column(name="uploaded_at",nullable = false,updatable = false)
 private LocalDateTime uploadedAt;
 	
-	@OneToMany(mappedBy ="media")
-	List<Document>document=new ArrayList<>();
+//	@OneToMany(mappedBy ="media")
+//	List<Document>document=new ArrayList<>();
 }

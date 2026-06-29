@@ -37,8 +37,7 @@ public class RequestItems {
 
 @ManyToOne
 @JoinColumn(name="request_id")
-//@Column(name="request_id")
-	private Request requestId;
+	private Request request;
 
 @Column(name="unit")
 	private String unit;

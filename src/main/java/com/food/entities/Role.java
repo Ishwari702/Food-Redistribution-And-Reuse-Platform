@@ -1,0 +1,9 @@
+package com.food.entities;
+
+public enum Role {
+	 ADMIN,
+	    DONOR,
+	    RECEIVER,
+	    DELIVERY_PARTNER,
+	    SUSTAINABILITY_PARTNER;
+}

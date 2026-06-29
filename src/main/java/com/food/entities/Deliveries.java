@@ -27,8 +27,7 @@ public class Deliveries {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
 	
-//	@Column(name="match_id")
-//private Long matchId;
+
 
 	@Column(name="delivery_mode")
 private String deliveryMode;
@@ -45,8 +44,7 @@ private LocalDateTime deliveryTime;
 	
 	@ManyToOne
 	@JoinColumn(name="delivery_partner_id")
-	//@Column(name="delievery_partner_id")
-private User deliveryPartnerId;
+private User deliveryPartner;
 	
 //	@OneToOne
 //	private Matches match;
@@ -54,6 +52,6 @@ private User deliveryPartnerId;
 	@JoinColumn(name = "match_id")
 	private Matches match;
 	
-	@OneToOne(mappedBy = "delivery")
-	private DeliveryOutcomes outcomes;
+//	@OneToOne(mappedBy = "delivery")
+//	private DeliveryOutcomes outcomes;
 }
