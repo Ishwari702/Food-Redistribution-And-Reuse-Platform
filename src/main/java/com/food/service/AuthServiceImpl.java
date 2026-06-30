@@ -3,8 +3,10 @@ package com.food.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.food.DTO.ForgetPasswordDTO;
 import com.food.DTO.LoginDTO;
 import com.food.DTO.RegisterDTO;
+import com.food.DTO.ResetPasswordDTO;
 import com.food.Exception.ResourceNotFoundException;
 import com.food.entities.User;
 import com.food.repository.UserRepository;
@@ -28,7 +30,7 @@ public class AuthServiceImpl implements AuthService{
 		user.setEmail(registerRequest.getEmail());
 		user.setPasswordHash(registerRequest.getPassword());
 		user.setPhone(registerRequest.getPhone());
-		user.setAccountType(registerRequest.getAccountType());		 user.setAddress(registerRequest.getAddress());
+		user.setAccountType(registerRequest.getAccountType());		 
 		user.setAddress(registerRequest.getAddress());
 	        user.setCity(registerRequest.getCity());
 	       
@@ -47,6 +49,23 @@ public class AuthServiceImpl implements AuthService{
 			throw new ResourceNotFoundException("Invalid Password");
 		}
 		return "Login Successfull";
+	}
+
+	@Override
+	public String forgotPassword(ForgetPasswordDTO request) {
+		if(!userRepo.existsByEmail(request.getEmail())) {
+			return "Email not found";
+		}
+		return "Email verified";
+	}
+
+	@Override
+	public String resetPassword(ResetPasswordDTO request) {
+		User user=userRepo.findByEmail(request.getEmail()).orElseThrow(()->new ResourceNotFoundException("Email not found"));
+		
+		user.setPasswordHash(request.getNewPassword());
+		userRepo.save(user);
+		return "Password reset successfully";
 	}
 
 	
